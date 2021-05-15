@@ -7,12 +7,91 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_app_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="MathApp"
+        android:textSize="40dp"
+        android:textColor="#54a0ff"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Hello! What would you like to practice?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_title" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_greeting">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_select_addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:height="100dp"
+        android:backgroundTint="#2e86de"
+        android:text="+"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+    <Button
+        android:id="@+id/btn_select_subtraction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:width="100dp"
+        android:height="100dp"
+        android:backgroundTint="#2e86de"
+        android:text="-"
+        android:textScaleX="2"
+        android:textSize="50dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_select_addition"
+        app:layout_constraintTop_toTopOf="@+id/btn_select_addition" />
+
+    <Button
+        android:id="@+id/btn_select_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:width="100dp"
+        android:height="100dp"
+        android:backgroundTint="#2e86de"
+        android:text="/"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="@+id/btn_select_addition"
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_addition" />
+
+    <Button
+        android:id="@+id/btn_select_multiplication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:width="100dp"
+        android:height="100dp"
+        android:backgroundTint="#2e86de"
+        android:text="x"
+        android:textSize="50dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_select_division"
+        app:layout_constraintTop_toTopOf="@+id/btn_select_division" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
