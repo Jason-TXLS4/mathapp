@@ -47,6 +47,7 @@
         android:width="100dp"
         android:height="100dp"
         android:backgroundTint="#2e86de"
+
         android:text="+"
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="@+id/frameLayout"
