@@ -227,7 +227,7 @@ public class equationsActivity extends AppCompatActivity {
     }
     private void makeDivision(){
         a = rand.nextInt(high) + 1;
-        b = rand.nextInt(high + 1);
+        b = rand.nextInt(high) + 1;
         c = a * b;
         result = a ;
         tv_eq.setText(String.valueOf(c) + " / " + String.valueOf(b));
