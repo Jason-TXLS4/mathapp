@@ -36,7 +36,7 @@ public class levelActivity extends AppCompatActivity {
 
         btn_level_1 = findViewById(R.id.btn_level_1);
         btn_level_2 = findViewById(R.id.btn_num_2);
-        btn_level_3 = findViewById(R.id.btn_num_point);
+        btn_level_3 = findViewById(R.id.btn_decimal);
         btn_level_4 = findViewById(R.id.btn_num_4);
         btn_level_5 = findViewById(R.id.btn_num_5);
         btn_level_6 = findViewById(R.id.btn_num_6);
@@ -49,6 +49,7 @@ public class levelActivity extends AppCompatActivity {
     public void selectLevel(View view) {
         // instantiate an editor
         editor = sharedPref.edit();
+
         if (btn_level_1.equals(view)) {
             editor.putString("level", "1"); // set the key/value
             editor.commit();  // save the key/value
@@ -71,15 +72,15 @@ public class levelActivity extends AppCompatActivity {
             editor.putString("level", "7"); // set the key/value
             editor.commit();  // save the key/value
         } else if (btn_level_8.equals(view)) {
-        editor.putString("level", "8"); // set the key/value
-        editor.commit();  // save the key/value
+            editor.putString("level", "8"); // set the key/value
+            editor.commit();  // save the key/value
         } else if (btn_level_9.equals(view)) {
             editor.putString("level", "9"); // set the key/value
             editor.commit();  // save the key/value
         }
-        text = sharedPref.getString("activitySelection", "fail") + " " + sharedPref.getString("level", "fail");
-        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-        toast.show();
+//        text = sharedPref.getString("activitySelection", "fail") + " " + sharedPref.getString("level", "fail");
+//        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+//        toast.show();
 
         Intent intent = new Intent(this, equationsActivity.class);
         startActivity(intent);
