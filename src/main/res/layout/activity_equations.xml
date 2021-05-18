@@ -256,4 +256,16 @@
         app:layout_constraintStart_toEndOf="@+id/tv_correctCount"
         app:layout_constraintTop_toTopOf="@+id/tv_correctCount" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleY="5"
+        android:progress="0"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

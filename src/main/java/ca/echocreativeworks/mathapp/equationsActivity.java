@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import ca.echocreativeworks.mathapp.Equation;
@@ -50,6 +51,8 @@ public class equationsActivity extends AppCompatActivity {
     EditText et_response;
     int activityType;
     ArrayList<Equation> list;
+    ProgressBar progressBar;
+    int total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class equationsActivity extends AppCompatActivity {
         tv_correctCount = findViewById(R.id.tv_correctCount);
         tv_incorrectCount = findViewById(R.id.tv_incorrectCount);
         list = new ArrayList();
+        progressBar = findViewById(R.id.progressBar);
 
 
         if (sharedPref.getString("activitySelection", "0").equals("add")) {
@@ -243,6 +247,9 @@ public class equationsActivity extends AppCompatActivity {
                 break;
         }//end switch
         Collections.shuffle(list);
+        total = list.size();
+        progressBar.setMax(total);
+        progressBar.setProgress(correctCount);
     }//end fillList
 
     private void presentEquation(){
@@ -283,8 +290,9 @@ public class equationsActivity extends AppCompatActivity {
             if(list.size() > 5)
                 list.add(4, list.get(0));
             else
-                list.get(0);
+                list.add(list.get(0));
 
+            total+=2;
             incorrectCount++;
             tv_incorrectCount.setText(String.valueOf(incorrectCount));
             et_response.setText("");
@@ -298,6 +306,8 @@ public class equationsActivity extends AppCompatActivity {
         }, 1200);
 
         }
-    }
+        progressBar.setMax(total);
+        progressBar.setProgress(correctCount);
+    }//end checkResponse()
 
 }
