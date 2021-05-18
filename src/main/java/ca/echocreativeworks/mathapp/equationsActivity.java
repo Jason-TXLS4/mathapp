@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import ca.echocreativeworks.mathapp.Equation;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class equationsActivity extends AppCompatActivity {
@@ -44,8 +46,10 @@ public class equationsActivity extends AppCompatActivity {
     TextView tv_status;
     TextView tv_correctCount;
     TextView tv_incorrectCount;
+    String symbol;
     EditText et_response;
     int activityType;
+    ArrayList<Equation> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +63,27 @@ public class equationsActivity extends AppCompatActivity {
         context = getApplicationContext();
         sharedPref = getSharedPreferences("mathApp", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
-        low = 0;
+        low = 1;
         correctCount = 0;
         incorrectCount = 0;
         tv_correctCount = findViewById(R.id.tv_correctCount);
         tv_incorrectCount = findViewById(R.id.tv_incorrectCount);
+        list = new ArrayList();
 
-        if(sharedPref.getString("activitySelection", "0").equals("add"))
+
+        if (sharedPref.getString("activitySelection", "0").equals("add")) {
             activityType = 1;
-        else if(sharedPref.getString("activitySelection", "0").equals("sub"))
+            symbol = " + ";
+        } else if (sharedPref.getString("activitySelection", "0").equals("sub")) {
             activityType = 2;
-        else if(sharedPref.getString("activitySelection", "0").equals("div"))
+            symbol = " - ";
+        } else if (sharedPref.getString("activitySelection", "0").equals("div")){
             activityType = 3;
-        else if(sharedPref.getString("activitySelection", "0").equals("mult"))
+            symbol = " / ";
+        }else if(sharedPref.getString("activitySelection", "0").equals("mult")) {
             activityType = 4;
+            symbol = " x ";
+        }
 
         if (sharedPref.getString("activitySelection", "0").equals("div")) {
             switch (Integer.parseInt(sharedPref.getString("level", "0"))) {
@@ -103,7 +114,6 @@ public class equationsActivity extends AppCompatActivity {
                 case 9:
                     high = 15;
                     break;
-
             }
         } else {
             switch (Integer.parseInt(sharedPref.getString("level", "0"))){
@@ -136,7 +146,8 @@ public class equationsActivity extends AppCompatActivity {
                     break;
             }//end swtich
         }//end if
-        makeEquation();
+        fillList(activityType);
+        presentEquation();
     }//end onCreate
 
 
@@ -190,47 +201,55 @@ public class equationsActivity extends AppCompatActivity {
     }
 
 
-    private void makeEquation(){
-          switch(activityType){
-              case 1:
-                  makeAddition();
-                  break;
-              case 2:
-                  makeSubtraction();
-                  break;
-              case 3:
-                  makeDivision();
-                  break;
-              case 4:
-                  makeMultiplication();
-                  break;
-        }
-    }
+    private void fillList(int t) {
+        //takes in the activity type
+        switch (t) {
+            case 1:
+                for (int i = 1; i < high + 1; i++) {
+                    for (int j = 1; j < high + 1; j++) {
+                        Equation e = new Equation(i, j, i + j);
+                        list.add(e);
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 1; i < high + 1; i++) {
+                    for (int j = 1; j < high + 1; j++) {
+                        Equation e = new Equation(i, j, i - j);
+                        list.add(e);
+                    }
+                }
+                break;
+            case 3:
+                int temp;
+                for (int i = 1; i < high + 1; i++) {
+                    for (int j = 1; j < high + 1; j++) {
+                        if(i<j){
+                            temp = i;
+                            i = j;
+                            j = temp;
+                        }
+                        Equation e = new Equation(i*j, i, j);
+                        list.add(e);
+                    }
+                }
+                break;
+            case 4:
+                for (int i = 2; i < 12 + 1; i++) {
+                        Equation e = new Equation(high, i, i * high);
+                        list.add(e);
+                        list.add(e);
+                }
+                break;
+        }//end switch
+        Collections.shuffle(list);
+    }//end fillList
 
-    private void makeAddition() {
-        a = rand.nextInt(high + 1);
-        b = rand.nextInt(high + 1);
-        result = a + b;
-        tv_eq.setText(String.valueOf(a) + " + " + String.valueOf(b));
-    }
-    private void makeSubtraction(){
-        a = rand.nextInt(high + 1);
-        b = rand.nextInt(high + 1);
-        result = a - b;
-        tv_eq.setText(String.valueOf(a) + " - " + String.valueOf(b));
+    private void presentEquation(){
+        if(list.size() != 0) {
+            tv_eq.setText(String.valueOf(list.get(0).getA()) + symbol + String.valueOf(list.get(0).getB()));
+            result = list.get(0).getR();
         }
-    private void makeMultiplication(){
-        a = rand.nextInt(high + 1);
-        b = rand.nextInt(high + 1);
-        result = a * b;
-        tv_eq.setText(String.valueOf(a) + " x " + String.valueOf(b));
-    }
-    private void makeDivision(){
-        a = rand.nextInt(high) + 1;
-        b = rand.nextInt(high) + 1;
-        c = a * b;
-        result = a ;
-        tv_eq.setText(String.valueOf(c) + " / " + String.valueOf(b));
     }
 
     private void checkResponse(){
@@ -238,6 +257,7 @@ public class equationsActivity extends AppCompatActivity {
         response = Double.valueOf(et_response.getText().toString());
         //compare response to stored answer
         if(result == response){
+            list.remove(0);
             correctCount++;
             tv_correctCount.setText(String.valueOf(correctCount));
             tv_status.setTextColor(Color.GREEN);
@@ -248,9 +268,23 @@ public class equationsActivity extends AppCompatActivity {
                         tv_status.setVisibility(View.INVISIBLE);
                     }
                 }, 1200);
-            makeEquation();
+            if(list.size() != 0) {
+                presentEquation();
+            }else{
+                tv_eq.setText("Level Complete.");
+            }
             et_response.setText("");
         }else{
+            //iff wrong, add equation twice, preferably spaced
+            if(list.size() > 3)
+                list.add( 2, list.get(0));
+            else
+                list.add(list.get(0));
+            if(list.size() > 5)
+                list.add(4, list.get(0));
+            else
+                list.get(0);
+
             incorrectCount++;
             tv_incorrectCount.setText(String.valueOf(incorrectCount));
             et_response.setText("");
