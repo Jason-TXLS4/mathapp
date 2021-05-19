@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Mathapp</string>
-    <string name="welcome" tools:ignore="StringEscaping">Welcome! Choose which type of math equations you\'d like to practice from the icons below.</string>
-
+    <string name="app_name">Artemath</string>
+    <string name="welcome">Welcome! Choose which type of math equations you\'d like to practice from the icons below.</string>
+    <string name="choose_level">Choose a difficulty level. The higher the number, the higher the difficulty.\nGood luck!</string>
 </resources>

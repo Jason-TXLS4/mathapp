@@ -8,7 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class levelActivity extends AppCompatActivity {
 
@@ -25,6 +29,10 @@ public class levelActivity extends AppCompatActivity {
     Button btn_level_8;
     Button btn_level_9;
     String text;
+    TextView tv_date_time;
+    Calendar cal;
+    String date;
+    SimpleDateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,11 @@ public class levelActivity extends AppCompatActivity {
         btn_level_7 = findViewById(R.id.btn_num_7);
         btn_level_8 = findViewById(R.id.btn_num_8);
         btn_level_9 = findViewById(R.id.btn_num_9);
+        tv_date_time = findViewById(R.id.tv_date_time);
+        cal = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        date = dateFormat.format(cal.getTime());
+        tv_date_time.setText(date);
 
     }
 
