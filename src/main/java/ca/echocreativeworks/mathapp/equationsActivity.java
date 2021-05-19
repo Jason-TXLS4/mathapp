@@ -16,6 +16,7 @@ import ca.echocreativeworks.mathapp.Equation;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Random;
+import ca.echocreativeworks.mathapp.EquationTools;
 
 public class equationsActivity extends AppCompatActivity {
 
@@ -74,7 +75,7 @@ public class equationsActivity extends AppCompatActivity {
         list = new ArrayList();
         progressBar = findViewById(R.id.progressBar);
 
-
+        //adjust settings for activity type selection
         if (sharedPref.getString("activitySelection", "0").equals("add")) {
             activityType = 1;
             symbol = " + ";
@@ -88,68 +89,9 @@ public class equationsActivity extends AppCompatActivity {
             activityType = 4;
             symbol = " x ";
         }
+        //adjust settings for difficulty level selection
+        high = EquationTools.setLevel(sharedPref.getString("activitySelection", "0"),Integer.parseInt(sharedPref.getString("level", "0") ));
 
-        if (sharedPref.getString("activitySelection", "0").equals("div")) {
-            switch (Integer.parseInt(sharedPref.getString("level", "0"))) {
-                case 1:
-                    high = 2;
-                    break;
-                case 2:
-                    high = 4;
-                    break;
-                case 3:
-                    high = 6;
-                    break;
-                case 4:
-                    high = 8;
-                    break;
-                case 5:
-                    high = 10;
-                    break;
-                case 6:
-                    high = 12;
-                    break;
-                case 7:
-                    high = 13;
-                    break;
-                case 8:
-                    high = 14;
-                    break;
-                case 9:
-                    high = 15;
-                    break;
-            }
-        } else {
-            switch (Integer.parseInt(sharedPref.getString("level", "0"))){
-                case 1:
-                    high = 1;
-                    break;
-                case 2:
-                    high = 2;
-                    break;
-                case 3:
-                    high = 3;
-                    break;
-                case 4:
-                    high = 4;
-                    break;
-                case 5:
-                    high = 5;
-                    break;
-                case 6:
-                    high = 6;
-                    break;
-                case 7:
-                    high = 7;
-                    break;
-                case 8:
-                    high = 8;
-                    break;
-                case 9:
-                    high = 9;
-                    break;
-            }//end swtich
-        }//end if
         fillList(activityType);
         presentEquation();
     }//end onCreate
