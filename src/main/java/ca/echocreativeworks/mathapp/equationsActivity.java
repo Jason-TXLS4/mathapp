@@ -209,16 +209,22 @@ public class equationsActivity extends AppCompatActivity {
         //takes in the activity type
         switch (t) {
             case 1:
-                for (int i = 1; i < high + 1; i++) {
-                    for (int j = 1; j < high + 1; j++) {
+                if(high > 5){
+                    low = high - 4;
+                }
+                for (int i = low; i < high + 1; i++) {
+                    for (int j = low; j < high + 1; j++) {
                         Equation e = new Equation(i, j, i + j);
                         list.add(e);
                     }
                 }
                 break;
             case 2:
-                for (int i = 1; i < high + 1; i++) {
-                    for (int j = 1; j < high + 1; j++) {
+                if(high > 5){
+                    low = high - 4;
+                }
+                for (int i = low; i < high + 1; i++) {
+                    for (int j = low; j < high + 1; j++) {
                         Equation e = new Equation(i, j, i - j);
                         list.add(e);
                     }

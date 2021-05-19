@@ -1,3 +1,5 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Mathapp</string>
+    <string name="welcome" tools:ignore="StringEscaping">Welcome! Choose which type of math equations you\'d like to practice from the icons below.</string>
+
 </resources>

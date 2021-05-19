@@ -8,6 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+    TextView tv_date_time;
+    Calendar cal;
+    String date;
+    SimpleDateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         btn_select_subtraction = findViewById(R.id.btn_select_subtraction);
         btn_select_division = findViewById(R.id.btn_select_division);
         btn_select_multiplication = findViewById(R.id.btn_select_multiplication);
+        tv_date_time = findViewById(R.id.tv_date_time);
+        cal = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        date = dateFormat.format(cal.getTime());
+        tv_date_time.setText(date);
+
 
     }
 

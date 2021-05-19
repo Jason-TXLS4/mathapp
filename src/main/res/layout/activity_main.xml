@@ -6,40 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_app_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="MathApp"
-        android:textSize="40dp"
-        android:textColor="#54a0ff"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_greeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="What would you like to practice?"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_app_title" />
-
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="210dp"
         android:layout_height="210dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting">
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
 
     <Button
         android:id="@+id/btn_select_addition"
@@ -95,5 +69,64 @@
         android:onClick="selectActivity"
         app:layout_constraintStart_toEndOf="@+id/btn_select_division"
         app:layout_constraintTop_toTopOf="@+id/btn_select_division" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/artemisphotobox" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_artemis_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Artemis"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout3"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout3" />
+
+    <TextView
+        android:id="@+id/tv_date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="date"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toEndOf="@+id/tv_artemis_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_artemis_name" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_artemis_name">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/welcome" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
