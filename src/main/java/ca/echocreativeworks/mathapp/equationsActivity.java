@@ -139,7 +139,7 @@ public class equationsActivity extends AppCompatActivity {
         checkResponse();
     }
     public void input_clear (View view){
-        et_response.setText("");;
+        et_response.setText("");
     }
     public void input_negative(View view){
         if(et_response.getText().toString().equals(""))
@@ -162,13 +162,59 @@ public class equationsActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
-                if(high > 5){
-                    low = high - 4;
-                }
-                for (int i = low; i < high + 1; i++) {
-                    for (int j = low; j < high + 1; j++) {
-                        Equation e = new Equation(i, j, i - j);
+                if(high < 10){
+                    for (int i = low; i < high + 1; i++) {
+                        Equation e = new Equation(high, i, high - i);
                         list.add(e);
+                        list.add(e);
+                    }
+                  }if(high == 10){
+                    low = 1;
+                    high = 5;
+                    for (int i = low + 10; i < high + 11; i++) {
+                        for (int j = low; j < high + 1; j++) {
+                            if(i>j){
+                                a = i;
+                                b = j;
+                            }else{
+                                a = j;
+                                b = i;
+                            }
+                            Equation e = new Equation(a, b, a - b);
+                            list.add(e);
+                        }
+                    }
+                }else if(high == 11) {
+                    low = 2;
+                    high = 7;
+                    for (int i = low + 10; i < high + 11; i++) {
+                        for (int j = low; j < high + 1; j++) {
+                            if(i>j){
+                                a = i;
+                                b = j;
+                            }else{
+                                a = j;
+                                b = i;
+                            }
+                            Equation e = new Equation(a, b, a - b);
+                            list.add(e);
+                        }
+                    }
+                }else if(high == 12) {
+                    low = 2;
+                    high = 10;
+                    for (int i = low + 10; i < high + 11; i++) {
+                        for (int j = low + 1; j < high + 1; j++) {
+                            if(i>j){
+                                a = i;
+                                b = j;
+                            }else{
+                                a = j;
+                                b = i;
+                            }
+                            Equation e = new Equation(a, b, a - b);
+                            list.add(e);
+                        }
                     }
                 }
                 break;
@@ -230,16 +276,10 @@ public class equationsActivity extends AppCompatActivity {
             }
             et_response.setText("");
         }else{
-            //iff wrong, add equation twice, preferably spaced
-            if(list.size() > 3)
-                list.add( 2, list.get(0));
-            else
-                list.add(list.get(0));
-            if(list.size() > 5)
-                list.add(4, list.get(0));
-            else
-                list.add(list.get(0));
-
+            //if wrong, add equation twice and shuffle
+            list.add(list.get(0));
+            list.add(list.get(0));
+            Collections.shuffle(list);
             total+=2;
             incorrectCount++;
             tv_incorrectCount.setText(String.valueOf(incorrectCount));

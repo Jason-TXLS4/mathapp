@@ -26,6 +26,12 @@ abstract class EquationTools {
                         return 14;
                     case 9:
                         return 15;
+                    case 10:
+                        return 16;
+                    case 11:
+                        return 17;
+                    case 12:
+                        return 18;
                 }
             } else {
                 switch (level) {
@@ -47,6 +53,12 @@ abstract class EquationTools {
                         return 8;
                     case 9:
                         return 9;
+                    case 10:
+                        return 10;
+                    case 11:
+                        return 11;
+                    case 12:
+                        return 12;
                 }//end swtich
             }//end if
             return -1;

@@ -144,6 +144,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_num_4" />
 
     <Button
+        android:id="@+id/btn_num_10"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:onClick="selectLevel"
+        android:text="10"
+        android:textSize="38dp"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_num_7" />
+
+    <Button
         android:id="@+id/btn_num_8"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -153,6 +164,17 @@
         android:onClick="selectLevel"
         app:layout_constraintStart_toStartOf="@+id/btn_num_5"
         app:layout_constraintTop_toBottomOf="@+id/btn_num_5" />
+
+    <Button
+        android:id="@+id/btn_num_11"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:onClick="selectLevel"
+        android:text="11"
+        android:textSize="38dp"
+        app:layout_constraintStart_toStartOf="@+id/btn_num_8"
+        app:layout_constraintTop_toBottomOf="@+id/btn_num_8" />
 
     <Button
         android:id="@+id/btn_num_9"
@@ -165,6 +187,18 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_num_6"
         app:layout_constraintStart_toStartOf="@+id/btn_num_6"
         app:layout_constraintTop_toBottomOf="@+id/btn_num_5" />
+
+    <Button
+        android:id="@+id/btn_num_12"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:onClick="selectLevel"
+        android:text="12"
+        android:textSize="38dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_num_9"
+        app:layout_constraintStart_toStartOf="@+id/btn_num_9"
+        app:layout_constraintTop_toBottomOf="@+id/btn_num_9" />
 
     <Button
         android:id="@+id/btn_level_1"

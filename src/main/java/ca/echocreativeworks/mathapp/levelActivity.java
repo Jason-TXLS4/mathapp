@@ -28,6 +28,9 @@ public class levelActivity extends AppCompatActivity {
     Button btn_level_7;
     Button btn_level_8;
     Button btn_level_9;
+    Button btn_level_10;
+    Button btn_level_11;
+    Button btn_level_12;
     String text;
     TextView tv_date_time;
     Calendar cal;
@@ -51,6 +54,9 @@ public class levelActivity extends AppCompatActivity {
         btn_level_7 = findViewById(R.id.btn_num_7);
         btn_level_8 = findViewById(R.id.btn_num_8);
         btn_level_9 = findViewById(R.id.btn_num_9);
+        btn_level_10 = findViewById(R.id.btn_num_10);
+        btn_level_11 = findViewById(R.id.btn_num_11);
+        btn_level_12 = findViewById(R.id.btn_num_12);
         tv_date_time = findViewById(R.id.tv_date_time);
         cal = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -89,6 +95,15 @@ public class levelActivity extends AppCompatActivity {
             editor.commit();  // save the key/value
         } else if (btn_level_9.equals(view)) {
             editor.putString("level", "9"); // set the key/value
+            editor.commit();  // save the key/value
+        } else if (btn_level_10.equals(view)) {
+            editor.putString("level", "10"); // set the key/value
+            editor.commit();  // save the key/value
+        } else if (btn_level_11.equals(view)) {
+            editor.putString("level", "11"); // set the key/value
+            editor.commit();  // save the key/value
+        } else if (btn_level_12.equals(view)) {
+            editor.putString("level", "12"); // set the key/value
             editor.commit();  // save the key/value
         }
 //        text = sharedPref.getString("activitySelection", "fail") + " " + sharedPref.getString("level", "fail");
